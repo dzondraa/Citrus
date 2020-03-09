@@ -9,8 +9,9 @@ class ProductModel {
         $this->db = $db;
     }
 
-    public function getAll() {
-        $query = "select * from products";
+    public function getProducts($paginate = null) {
+        $query = $paginate == null ? "select * from products" : "select * from products limit $paginate";
+        // $query = "select * from products";
         try {
             $result = $this->db->executeQuery($query);
         } catch(PDOException $ex) {

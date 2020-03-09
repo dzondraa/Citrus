@@ -18,7 +18,7 @@ if(isset($_GET['page'])){
         
     }
 } else {
-    
+    require_once "app/views/pages/home.php";
 }
 require_once "app/Views/shared/footer.php";
 

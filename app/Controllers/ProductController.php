@@ -13,7 +13,7 @@ class ProductController {
     }
 
     public function show() {
-        $products = $this->model->getAll();
+        $products = $this->model->getProducts(9);
         return $products;
     }
 }
