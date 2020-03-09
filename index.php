@@ -4,11 +4,15 @@ require_once "app/Config/autoload.php";
 require "app/Config/database.php";
 
 use App\Controllers\ProductController;
+use App\Controllers\CommentController;
 use App\Config\DB;
 
 $db = DB::instance();
 $productController = new ProductController($db);
+$commentController = new CommentController($db);
+$comments = $commentController->show();
 $products = $productController->show();
+
 
 
 
@@ -22,7 +26,5 @@ if(isset($_GET['page'])){
 }
 require_once "app/Views/shared/footer.php";
 
-
-var_dump($products);
 
 
