@@ -4,9 +4,10 @@
     </a>
     <div class="media-body">
         <div class="well well-lg">
-            <h4 class="media-heading text-uppercase reviews">Marco </h4>
+            <h4 class="media-heading text-uppercase reviews"><?= $comment->name ?> </h4>
+            <h5 class="media-heading reviews"><?= $comment->email ?> </h5>
             <p class="media-comment">
-            Great snippet! Thanks for sharing.
+            <?= $comment->text ?>
             </p>
         </div>              
     </div>

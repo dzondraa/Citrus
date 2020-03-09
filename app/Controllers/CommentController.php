@@ -13,7 +13,35 @@ class CommentController {
     }
 
     public function show() {
-        $products = $this->model->getComments();
+        $products = $this->model->getComments(9);
         return $products;
     }
+
+    public function addComment($data) {
+        $name = $data['name'];
+        $email = $data['email'];
+        $text = $data['text'];
+        $approved = 0;
+
+        // TO DO - VALIDATIONS
+
+        $success = $this->model->insert($name, $email, $text, $approved);
+        $msg;
+        if($success) {
+            $msg =  (object)array("message" => "Commented successfuly!" , "type" => "success");
+            $newComment = (object)array(
+                "id" => $this->db->getLastId(),
+                "name" => $name,
+                "email" => $email,
+                "text" => $text,
+                "approved" => $approved
+            );
+               
+        } else {
+            $msg = (object)array("message" => "Server error!" , "type" => "danger");
+        }
+
+        return (object)array("message" => $msg, "newComment" => $newComment);
+    }
 }
+?>

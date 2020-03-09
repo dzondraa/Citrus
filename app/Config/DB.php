@@ -32,4 +32,18 @@ class DB {
         $prepare->execute($params);
         return $prepare->fetch();
     }
+
+    public function executeInsert(string $query, Array $params) : bool {
+        $prepare = $this->conn->prepare($query);
+        $res = $prepare->execute($params);
+        if($res) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getLastId() {
+        return $this->conn->lastInsertId();
+    }
 }
