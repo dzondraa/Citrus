@@ -1,17 +1,19 @@
 <?php 
 
 namespace App\Models;
+use App\Controllers\LoginController;
 
 class CommentModel {
     private $db;
+    private $loginController;
     
     public function __construct($db) {
         $this->db = $db;
+        $this->loginController = new LoginController($db);
     }
 
-    public function getComments($paginate = null) {
-        $query = $paginate == null ? "select * from comments" : "select * from comments limit $paginate";
-        
+    public function getComments($status) {
+        $query = "select * from comments where approved='$status'";
         try {
             $result = $this->db->executeQuery($query);
         } catch(PDOException $ex) {
@@ -29,5 +31,19 @@ class CommentModel {
             $ex->getMessage();
         }
         return $res;
+    }
+
+    public function updateStatus($id, $status) {
+        
+        if($this->loginController->isAdmin()) {
+            $query = "update comments set approved = ? where id = ?";
+            try {
+                $this->db->executeInsert($query, [$status, $id]);
+            }
+            catch(PDOException $ex) {
+                echo $ex->getMessage();
+            }
+           
+        }
     }
 }

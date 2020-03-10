@@ -14,7 +14,7 @@ $commentController = new CommentController($db);
 $productController = new ProductController($db);
 $loginController = new LoginController($db);
 
-$comments = $commentController->show();
+$comments = $commentController->show('approved');
 $products = $productController->show();
 $messages = [];
 
@@ -30,10 +30,25 @@ if (isset($_POST['login-submit'])) {
 
 
 require_once "app/Views/shared/header.php";
+
 if(isset($_GET['page'])){
     switch($_GET['page']) {
-        case $_GET['page'] == 'admin' : require_once "app/views/pages/admin.php";
-        break;
+        case $_GET['page'] == 'admin' : 
+            
+            if(isset($_GET['action']) && isset($_GET['id'])) {
+
+                switch($_GET['action']) {
+
+                    case 'delete' : $commentController->delete($_GET['id']);
+                    break;
+                    case 'approve' : $commentController->approve($_GET['id']);
+                    break;
+                }
+               
+            }
+            $comments = $commentController->show('pending');
+            require_once "app/views/pages/admin.php";
+            break;
 
         case $_GET['page'] == 'logout' : $loginController->logout();
         break;

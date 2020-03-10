@@ -6,7 +6,7 @@
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Text</th>
-      <th scope="col">Approved</th>
+      <th scope="col">Status</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -23,8 +23,8 @@
       <td><?= $comment->text ?></td>
       <td><?= $comment->approved ?></td>
       <td>
-        <a  type="button" class="btn btn-success">Approved</a>
-        <a type="button" class="btn btn-danger">Delete</a>
+        <a href="index.php?page=admin&action=approve&id=<?=$comment->id?>" type="button" class="btn btn-success">Approve</a>
+        <a href="index.php?page=admin&action=delete&id=<?=$comment->id?>" type="button" class="btn btn-danger">Delete</a>
       </td>
     </tr>
 <?php endforeach; ?>

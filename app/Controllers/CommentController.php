@@ -12,8 +12,8 @@ class CommentController {
         $this->db = $db;
     }
 
-    public function show() {
-        $products = $this->model->getComments(9);
+    public function show($status) {
+        $products = $this->model->getComments($status);
         return $products;
     }
 
@@ -21,7 +21,7 @@ class CommentController {
         $name = $data['name'];
         $email = $data['email'];
         $text = $data['text'];
-        $approved = 0;
+        $approved = 'pending';
 
         // TO DO - VALIDATIONS
 
@@ -42,6 +42,14 @@ class CommentController {
         }
 
         return (object)array("message" => $msg, "newComment" => $newComment);
+    }
+
+    public function approve($id) {
+        $this->model->updateStatus($id, 'approved');
+    }
+
+    public function delete($id) {
+        $this->model->updateStatus($id, 'deleted');
     }
 }
 ?>

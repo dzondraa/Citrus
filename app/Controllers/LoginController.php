@@ -24,6 +24,13 @@ class LoginController {
         $_SESSION['user'] = null;
        header("Location:index.php");
     }
+
+    public function isAdmin() {
+        if(isset($_SESSION['user'])) {
+            return $_SESSION['user']->role == 'admin' ? true : false;  
+        }
+        
+    }
   
 }
 ?>
