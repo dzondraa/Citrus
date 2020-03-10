@@ -1,9 +1,10 @@
 <div class="container">
 
   <!-- Page Heading -->
-  <h1 class="my-4">Page Heading
-    <small>Secondary Text</small>
+  <h1 class="my-4">Citrus
+    <small>Store</small>
   </h1>
+
   <?php
     foreach($messages as $msg):
   ?>
