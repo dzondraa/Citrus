@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="margin-top:100px;">
     <form action="index.php" method="post">
     <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>

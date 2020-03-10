@@ -33,6 +33,10 @@ require_once "app/Views/shared/header.php";
 if(isset($_GET['page'])){
     switch($_GET['page']) {
         case $_GET['page'] == 'admin' : require_once "app/views/pages/admin.php";
+        break;
+
+        case $_GET['page'] == 'logout' : $loginController->logout();
+        break;
     }
 } else {
     require_once "app/views/pages/home.php";

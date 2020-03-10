@@ -16,7 +16,13 @@ class LoginController {
         $user = $this->model->getUser($data['username'] , $data['password']);
         if($user) {
             $_SESSION['user'] = $user;
+            header("Location:index.php?page=admin");
         }
+    }
+
+    public function logout() {
+        $_SESSION['user'] = null;
+       header("Location:index.php");
     }
   
 }

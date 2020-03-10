@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Shop Homepage - Start Bootstrap Template</title>
+    <title>Citrus - Store</title>
 
     <!-- Bootstrap core CSS -->
     <link href="public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,10 +26,23 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
+                    <a class="nav-link" href="index.php">Home
                     </a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.php?page=admin">Admin
+                    </a>
+                </li>
+                <?php
+                    if(isset($_SESSION['user'])):
+                ?>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.php?page=logout">Logout
+                    </a>
+                </li>
+                <?php
+                    endif;
+                ?>
             </ul>
         </div>
     </div>

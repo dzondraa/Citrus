@@ -1,5 +1,4 @@
-<div class="container">
-
+<div class="container" style="padding-top:100px;">
   <!-- Page Heading -->
   <h1 class="my-4">Citrus
     <small>Store</small>
