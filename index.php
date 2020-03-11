@@ -26,8 +26,10 @@ if(isset($_POST['submit'])) {
     // $comments[] = $response->newComment;
 } 
 if (isset($_POST['login-submit'])) {
-    $loginController->checkLogin($_POST);
-    var_dump($_SESSION['user']);
+    $error = $loginController->checkLogin($_POST);
+    if(!is_null($error)) {
+        $messages[] = $error;
+    }
 }
 
 

@@ -1,6 +1,6 @@
 <li class="media">
     <a class="pull-left" href="#">
-        <img class="media-object img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg" alt="profile">
+        <img class="media-object img-circle" src="public/images/user.png" alt="profile">
     </a>
     <div class="media-body">
         <div class="well well-lg">

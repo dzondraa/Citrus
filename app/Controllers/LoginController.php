@@ -13,10 +13,16 @@ class LoginController {
     }
 
     public function checkLogin($data) {
+        $messages = [];
         $user = $this->model->getUser($data['username'] , $data['password']);
         if($user) {
             $_SESSION['user'] = $user;
             header("Location:index.php?page=admin");
+        } else {
+            return $messages[] =  (object)array(
+                "message" => "Wrong login params." ,
+                 "type" => "danger"
+                );
         }
     }
 
