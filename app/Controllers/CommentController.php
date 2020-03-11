@@ -18,17 +18,31 @@ class CommentController {
     }
 
     public function addComment($data) {
+        $messages = [];
         $name = $data['name'];
         $email = $data['email'];
         $text = $data['text'];
         $approved = 'pending';
 
-        // TO DO - VALIDATIONS
+        if(!preg_match("/^[a-zA-Z ]+$/",$name)) {
+            $messages[] = (object)array("message" => "Only letters and white space allowed" , "type" => "danger");
+        }
 
-        $success = $this->model->insert($name, $email, $text, $approved);
-        $msg;
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
+        {
+            $messages[] = (object)array("message" => "Invalid email format" , "type" => "danger");
+        }
+
+        if(strlen($text) < 1) {
+            $messages[] = (object)array("message" => "Comment text should have at least 1 character" , "type" => "danger");
+        }
+        
+        if(count($messages) == 0) {
+            $success = $this->model->insert($name, $email, $text, $approved);
+        }
+
         if($success) {
-            $msg =  (object)array("message" => "Commented successfuly!" , "type" => "success");
+            $messages[] =  (object)array("message" => "Commented successfuly!" , "type" => "success");
             $newComment = (object)array(
                 "id" => $this->db->getLastId(),
                 "name" => $name,
@@ -38,10 +52,10 @@ class CommentController {
             );
                
         } else {
-            $msg = (object)array("message" => "Server error!" , "type" => "danger");
+            $messages[] = (object)array("message" => "Server error!" , "type" => "danger");
         }
 
-        return (object)array("message" => $msg, "newComment" => $newComment);
+        return $messages;
     }
 
     public function approve($id) {

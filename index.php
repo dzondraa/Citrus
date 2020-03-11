@@ -20,8 +20,10 @@ $messages = [];
 
 if(isset($_POST['submit'])) {
     $response = $commentController->addComment($_POST);
-    $messages[] = $response->message;
-    $comments[] = $response->newComment;
+    foreach($response as $msg) {
+        $messages[] = $msg;
+    }
+    // $comments[] = $response->newComment;
 } 
 if (isset($_POST['login-submit'])) {
     $loginController->checkLogin($_POST);
