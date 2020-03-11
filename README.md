@@ -10,6 +10,6 @@ data to object layer between database and contollers.
 
 - Download repository from github
 - Move root folder into htdoc if you are using xampp or similar, or put it in public_html
-- Create database, import citrusDB.sql
+- Create database, import citrus.sql (location: root folder)
 - Change database config with correct parameters - app/Config/database.php
 - Admin user - username: admin; password: admin;
