@@ -13,3 +13,4 @@ data to object layer between database and contollers.
 - Create database, import citrus.sql (location: root folder)
 - Change database config with correct parameters - app/Config/database.php
 - Admin user - username: admin; password: admin;
+- Ready to launch
