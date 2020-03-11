@@ -70,7 +70,7 @@
                         </div>
                      
                       <div class="form-group">
-                            <label for="uploadMedia" class="col-sm-2 control-label">Name</label>
+                            <label for="uploadMedia" class="col-sm-2 control-label">Email</label>
                             <div class="col-sm-10">                    
                                 <div class="input-group">
                                   <input type="text" class="form-control" name="email" id="uploadMedia">
